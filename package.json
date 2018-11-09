@@ -6,6 +6,10 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/sanchosa/nodejs-utils-rmq.git"
+  },
   "keywords": [
     "rabbit",
     "node",
@@ -26,5 +30,6 @@
     "eslint": "4.6.1",
     "eslint-plugin-async-await": "0.0.0",
     "eslint-plugin-flowtype": "^2.50.0"
-  }
+  },
+  "homepage": "https://github.com/sanchosa/nodejs-utils-rmq"
 }
