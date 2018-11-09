@@ -197,20 +197,20 @@ module.exports = class Helper {
 				this.logger.info(`createQueues`)
 				await Promise.all(this.createRequiredQueues())
 
-				this.logger.info(`configureReportListener`)
-				// The prefetch method with the value of 1 tells RabbitMQ not to give more than
-				// one message to a worker at a time. 
-				// Or, in other words, don't dispatch a new message to a worker until it has processed
-				// and acknowledged the previous one.
-				// Instead, it will dispatch it to the next worker that is not still busy.
-				this.RabbitMQ.ch.prefetch(1)
-
 				// Add channel error listener
 				this.RabbitMQ.ch.on(`error`, this.channelErrorListener)
 
 				// Add required listeners
 				this.logger.info(`Check required listeners`)
 				if (`requiredListeners` in data) {
+					this.logger.info(`configureListener`)
+					// The prefetch method with the value of 1 tells RabbitMQ not to give more than
+					// one message to a worker at a time. 
+					// Or, in other words, don't dispatch a new message to a worker until it has
+					// processed and acknowledged the previous one.
+					// Instead, it will dispatch it to the next worker that is not still busy.
+					this.RabbitMQ.ch.prefetch(1)
+
 					await Promise.all(this.addRequiredListeners())
 				}
 				else {
@@ -343,13 +343,18 @@ module.exports = class Helper {
 		})
 	}
 	disconnectRMQ() {
-		this.logger.info(`Disconnecting from RabbitMQ`)
-		const {conn} = this.RabbitMQ
+		return new Promise(resolve =>
+			setTimeout(() => {
+				this.logger.info(`Disconnecting from RabbitMQ`)
+				const {conn} = this.RabbitMQ
 
-		this.RabbitMQ.conn = null
-		this.RabbitMQ.ch = null
+				this.RabbitMQ.conn = null
+				this.RabbitMQ.ch = null
 
-		return conn.close()
+				conn.close()
+				resolve()
+			}, 1000)
+		)
 	}
 	// optional error listeners
 	channelErrorListener(err) {
