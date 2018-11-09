@@ -1,6 +1,6 @@
 {
   "name": "nodejs-utils-rmq",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "RabbitMQ helper utility for nodeJS",
   "main": "index.js",
   "scripts": {
