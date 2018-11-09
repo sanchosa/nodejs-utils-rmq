@@ -50,7 +50,7 @@ const processMessage = msg => {
 	rmq.sendRMQack(msg)
 }
 const params = {
-	requiredQueues: [queueConfig.EMAIL_QUEUE.NAME, queueConfig.ACTS_QUEUE.NAME],
+	requiredQueues: [queueConfig.MY_QUEUE.NAME],
 	queue: {
 		connectionOptions: queueConfig.QUEUE.CONNECTION_OPTIONS,
 		assertOptions: queueConfig.QUEUE.ASSERT_OPTIONS
