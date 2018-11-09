@@ -1,0 +1,30 @@
+{
+  "name": "nodejs-utils-rmq",
+  "version": "1.0.0",
+  "description": "RabbitMQ helper utility for nodeJS",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [
+    "rabbit",
+    "node",
+    "helper",
+    "functions",
+    "promise",
+    "based"
+  ],
+  "author": "Alexandr Merkulov",
+  "license": "MIT",
+  "dependencies": {
+    "amqplib": "^0.5.2",
+    "log4js": "^3.0.6",
+    "randomstring": "^1.1.5"
+  },
+  "devDependencies": {
+    "babel-eslint": "^10.0.1",
+    "eslint": "4.6.1",
+    "eslint-plugin-async-await": "0.0.0",
+    "eslint-plugin-flowtype": "^2.50.0"
+  }
+}
