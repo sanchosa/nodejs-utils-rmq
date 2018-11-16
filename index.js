@@ -351,7 +351,7 @@ module.exports = class Helper {
 				this.RabbitMQ.conn = null
 				this.RabbitMQ.ch = null
 
-				conn.close()
+				conn && conn.close()
 				resolve()
 			}, 1000)
 		)
